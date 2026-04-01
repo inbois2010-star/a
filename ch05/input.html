@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홀짝 찾기</title>
+</head>
+<body>
+<h2>홀수 짝수 찾기</h2>
+
+<input type="number" id="input_num"/>
+<button type="button" id="btn">확인</button>
+<h1 id="result"></h1>
+
+<script>
+    document.getElementById("btn").onclick = function(){
+        const num =document.getElementById("input_num").value;
+        const text = document.getElementById("result");
+
+        if (num%2==0){
+            text.innerText = "짝";
+        }
+        else{
+            text.innerText = "홀";
+        }
+
+    }
+</script>
+</body>
+</html>

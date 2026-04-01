@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적 확인</title>
+</head>
+<body>
+<h2>성적 확인</h2>
+
+<input type="number" id="score"/>
+<button type="button" id="btn">확인</button>
+<h1 id="result"></h1>
+
+<script>
+    document.getElementById("btn").onclick = function(){
+        const num =document.getElementById("score").value;
+        const text = document.getElementById("result");
+        if (num >= 100 || num <= 0){
+            alert("잘못 입력됨");
+        } else {
+            switch (Math.trunc(num / 10)){
+                case 10:
+                    alert("A");
+                    break;
+                case 9:
+                    alert("A");
+                    break;
+                case 8:
+                    alert("B");
+                    break;
+                case 7:
+                    alert("C");
+                    break;
+                case 6:
+                    alert("D");
+                    break;
+                case 5:
+                    alert("F");
+                    break;
+                case 4:
+                    alert("F");
+                    break;
+                case 3:
+                    alert("F");
+                    break;
+                case 2:
+                    alert("F");
+                    break;
+                case 1:
+                    alert("F");
+                    break;
+            }
+        }
+    }
+</script>
+</body>
+</html>
