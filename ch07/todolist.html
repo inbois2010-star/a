@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        @font-face {
+            font-family: 'Juache';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+}
+        body{
+            background-color: gray;
+            color: white;
+            font-family: "juache";
+        }
+        h1{
+            color: pink;
+            margin-bottom: 5px;
+        }
+        p{
+            color: rgb(225, 105, 105);
+        }
+        .wrap{
+            width: 60%;
+            margin: 20px auto 0;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        img{
+            width: 100%;
+            border-radius: 10px;
+        }
+        .todo_wrap{
+            background-color:rgb(0, 210, 37);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        h2{
+            color: skyblue;
+        }
+        .todo_wrap h2{
+            margin-top: 0px;
+        }
+        .todo_check_wrap{
+            background-color: rgba(195,0,255,0.2);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        button{
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: yellow;
+            color: black;
+        }
+        #todo_list li{
+            margin-bottom: 5px;
+        }
+        #todo_list .todo_item.done{
+            color: #b4b4b4;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Todolisat</h1>
+        <p>해야 할 일을 관리하는 목록입니다.</p>
+        <img src="TJhaFg_t_pHS3dyUu0Tf_ahD7Y1dRNZa4tyNySW_CqSXPQy_c5BLGPV-0F725RamUgiAaazIusI6v9ZbdnLMsR0rmcIbHkiy_9tq0wt9rMoB-YgAp40_R9vrcKclxRXtMgTJSNk9b1kQtgSNEpqLKtbchyOPLfxaHEKP_LMigr0.webp" alt="손 입니다">
+        <div class="todo_wrap">
+            <h2>할 일 목록</h2>
+            <ol id="todo_list">
+
+            </ol>
+        </div>
+        <div class="todo_wrap">
+            <h2>할 일 등록</h2>
+            <input
+                id="input_todo"
+                type="text"
+                placeholder="할 일을 입력하세요.">
+            <button id="btn_add">등록</button>
+        </div>
+        <div class="todo_check_wrap">
+            <h2>완료하기</h2>
+            <p>
+                완료 처리할 아이템의 순번을 입력하고 버튼을 누르면 완료 처리됩니다.
+            </p>
+            <input
+                type="number"
+                id="input_todo_num"
+                placeholder="할 일 순번을 입력하세요.">
+            <button id="btn_check">완료</button>
+        </div>
+    </div>
+</body>
+<script>
+    const todos=['밥 먹기',"씻기","양치하기"];
+    function renderTodo(todo){
+        const li=document.createElement('li');
+        li.textContent=todo;
+        li.classList.add("todo_item");
+        document.getElementById('todo_list').appendChild(li);
+    }
+    for (let i=0;i<todos.length;i++){
+        renderTodo(todos[i]);
+    }
+    document.getElementById('btn_add').onclick=function(){
+        const todo = document.getElementById("input_todo").value;
+        todos.push(todo);
+        renderTodo(todo);
+    };
+    document.getElementById("btn_check").onclick=function(){
+        const num=document.getElementById('input_todo_num').value;
+        if (num<1 && num>todos.length){
+            alert(`1부터 ${todos.length} 사이의 값을 입력해주세요.`)
+            return;
+        }
+        const todoItems=document.getElementsByClassName('todo_item');
+        todoItems[num-1].classList.add("done");
+    };
+</script>
+</html>         
