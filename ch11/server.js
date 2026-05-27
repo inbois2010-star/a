@@ -1,0 +1,24 @@
+const express=require("express");
+const app=express();
+const mysql=require("mysql2");
+const conn=mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"1234",
+    database:"gbsw"
+});
+conn.connect();
+app.listen(3000,()=>{
+    console.log("3000번 포트 서버 대기 중");
+});
+app.get("/",(req,res)=>{
+    res.send("나의 서버입니다.");
+});
+app.get("/user/:id",(req,res)=>{
+    conn.query("select * from tb_user",(err,rows,fields)=>{
+        if (req.params.id=='0'){
+            next();
+        }
+        console.log(req.params.id);
+    });
+});
